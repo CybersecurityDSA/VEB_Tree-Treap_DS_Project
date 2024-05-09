@@ -1,4 +1,4 @@
-# VEB_Tree-Treap_DS_Project 
+# VEB_Tree-Treap_Data_Structures_Project 
 
 *Team Members:*
 __1)__ Dharaneesh Panneer Selvam
