@@ -36,6 +36,37 @@ public: // Making Treap functions public
     bool empty() {
         return root == NULL;
     }
+TreapNode* deleteMaxUtil(TreapNode* root) {
+        if (root == NULL)
+            return root;
+
+        if (root->left == NULL && root->right == NULL) {
+            delete root;
+            return NULL;
+        }
+
+        if (root->left == NULL) {
+            TreapNode* temp = root->right;
+            delete root;
+            return temp;
+        }
+
+        if (root->right == NULL) {
+            TreapNode* temp = root->left;
+            delete root;
+            return temp;
+        }
+
+        if (root->left->priority < root->right->priority) {
+            root = leftRotate(root);
+            root->left = deleteMaxUtil(root->left);
+        } else {
+            root = rightRotate(root);
+            root->right = deleteMaxUtil(root->right);
+        }
+
+        return root;
+    }
 
     TreapNode* insertUtil(TreapNode* root, int key, int priority) {
         if (!root)
