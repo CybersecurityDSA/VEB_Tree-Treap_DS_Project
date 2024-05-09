@@ -1,16 +1,16 @@
 # VEB_Tree-Treap_Data_Structures_Project 
 
 *Team Members:*
-__1)__ Dharaneesh Panneer Selvam
-__2)__ Gangesh Rameshkumar
-__3)__ Sanjit Muralikrishnan
-__4)__ Abhishek Prattipati
-__5)__ Shashaank Subramannya
-__6)__ Jyotiraditya Cheemakuruthi
-__7)__ Tania Panjagala
-__8)__ Manya Khandelwal
-__9)__ Ansh Mishra
-__10)__ Garry Perumal Roy
+1) Dharaneesh Panneer Selvam
+2) Gangesh Rameshkumar
+3) Sanjit Muralikrishnan
+4) Abhishek Prattipati
+5) Shashaank Subramannya
+6) Jyotiraditya Cheemakuruthi
+7) Tania Panjagala
+8) Manya Khandelwal
+9) Ansh Mishra
+10) Garry Perumal Roy
 
 ## VEB-Trees
 
