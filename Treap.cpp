@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <random>
 
 using namespace std;
 
@@ -10,22 +11,24 @@ struct TreapNode {
 };
 
 class TreapPriorityQueue {
-public: // Making Treap functions public
+public:
     TreapNode* root;
 
     TreapPriorityQueue() {
         root = NULL;
     }
 
-    void push(int key, int priority) {
-        root = insertUtil(root, key, priority);
+    void push(int key) {
+        root = insertUtil(root, key);
     }
 
     void pop() {
         if (root) {
+            cout << "Popping element with priority " << root->priority << endl;
             root = deleteMaxUtil(root);
         }
     }
+
 
     int top() {
         if (root)
