@@ -210,7 +210,9 @@ void printHelper(int depth = 0, int offset = 0) {
 
 int main() {
     VEBTree veb(16); // Example with universe size 16
-    veb.insert(5);
+    int value = 0, choice = 0;
+    //Test Cases
+    /*veb.insert(5);
     veb.insert(3);
     veb.insert(7);
     veb.insert(2);
@@ -227,6 +229,53 @@ int main() {
     cout << "Predecessor of 7: " << veb.predecessor(7) << endl;
     cout << "Maximum: " << veb.maximum() << endl;
     cout << "Minimum: " << veb.minimum() << endl;
+    */
 
+    while (true) {
+        cout << "Welcome to the Van Emde Boas Tree!" << endl;
+        cout << "1. Insert\n2. Erase\n3. Print\n4. Successor\n5. Predecessor\n6. Maximum\n7. Minimum\n8. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value to insert: ";
+                cin >> value;
+                veb.insert(value);
+                cout << "After insertion: ";
+                veb.print();
+                break;
+            case 2:
+                cout << "Enter value to erase: ";
+                cin >> value;
+                veb.erase(value);
+                cout << "After deletion of " << value << ": ";
+                veb.print();
+                break;
+            case 3:
+                veb.print();
+                break;
+            case 4:
+                cout << "Enter value to check for successor:" << endl;
+                cin >> value;
+                cout << "Successor of " << value << ": " << veb.successor(value) << endl;
+                break;
+            case 5:
+                cout << "Enter value to check for predecessor:" << endl;
+                cin >> value;
+                cout << "Predecessor of " << value << ": " << veb.predecessor(value) << endl;
+                break;
+            case 6:
+                cout << "Maximum: " << veb.maximum() << endl;
+                break;
+            case 7:
+                cout << "Minimum: " << veb.minimum() << endl;
+                break;
+            case 8:
+                return 0;
+            default:
+                cout << "Invalid choice\n";
+        }
+    }
     return 0;
 }
