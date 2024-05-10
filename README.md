@@ -1,6 +1,6 @@
 # VEB_Tree-Treap_Data_Structures_Project 
 
-*Team Members:*
+*Team 2 Members:*
 1) Dharaneesh Panneer Selvam
 2) Gangesh Rameshkumar
 3) Sanjit Muralikrishnan
