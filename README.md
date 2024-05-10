@@ -35,6 +35,9 @@ This project implements a VEB-Tree (van Emde Boas Tree), a data structure for st
 
 - While offering superior time complexity (O(log log N)) compared to basic data structures, VEB-Trees have a higher constant factor in their runtime. This trade-off is ideal for scenarios involving frequent operations on a vast universe of keys.
 
+### References:
+1) https://github.com/dragoun/veb-tree
+
 ## Treaps
 
 Treaps are a type of self-balancing binary search tree that offer efficient search, insertion, and deletion operations with an interesting twist: they achieve balance probabilistically. This document provides a brief overview of treaps, highlighting their advantages and considerations for use.
