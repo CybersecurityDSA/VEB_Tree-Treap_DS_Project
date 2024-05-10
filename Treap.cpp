@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <random>
 
 using namespace std;
 
@@ -10,19 +11,20 @@ struct TreapNode {
 };
 
 class TreapPriorityQueue {
-public: // Making Treap functions public
+public:
     TreapNode* root;
 
     TreapPriorityQueue() {
         root = NULL;
     }
 
-    void push(int key, int priority) {
-        root = insertUtil(root, key, priority);
+    void push(int key) {
+        root = insertUtil(root, key);
     }
 
     void pop() {
         if (root) {
+            cout << "Popping element with priority " << root->priority << endl;
             root = deleteMaxUtil(root);
         }
     }
@@ -37,17 +39,17 @@ public: // Making Treap functions public
         return root == NULL;
     }
 
-    TreapNode* insertUtil(TreapNode* root, int key, int priority) {
+    TreapNode* insertUtil(TreapNode* root, int key) {
         if (!root)
-            return newNode(key, priority);
+            return newNode(key);
 
         if (key <= root->key) {
-            root->left = insertUtil(root->left, key, priority);
+            root->left = insertUtil(root->left, key);
 
             if (root->left->priority > root->priority)
                 root = rightRotate(root);
         } else {
-            root->right = insertUtil(root->right, key, priority);
+            root->right = insertUtil(root->right, key);
 
             if (root->right->priority > root->priority)
                 root = leftRotate(root);
@@ -69,11 +71,12 @@ public: // Making Treap functions public
     }
 
 private:
-    TreapNode* newNode(int key, int priority) {
+    TreapNode* newNode(int key) {
         TreapNode* temp = new TreapNode;
         temp->key = key;
-        temp->priority = priority;
+        temp->priority = rand(); // Assign random priority
         temp->left = temp->right = NULL;
+        cout << "Inserted element with priority " << temp->priority << endl;
         return temp;
     }
 
@@ -144,18 +147,33 @@ private:
     }
 };
 
+
 // Test the priority queue and Treap functions
 void testPriorityQueueAndTreap() {
     TreapPriorityQueue pq;
 
     int keys[] = {5, 3, 8, 1, 4};
-    int priorities[] = {10, 20, 15, 30, 25};
 
     // Push elements into the priority queue with specified priorities
-    cout << "Pushing elements into the priority queue with specified priorities..." << endl;
+    cout << "Pushing elements into the priority queue with random priorities..." << endl;
     for (int i = 0; i < 5; ++i) {
-        pq.push(keys[i], priorities[i]);
+        pq.push(keys[i]);
     }
+
+    // Print inorder traversal
+    cout << "Inorder traversal of the treap: ";
+    pq.inorderTraversal(pq.root);
+    cout << endl;
+
+    // Delete elements
+    cout << "Deleting elements with keys 3 and 8..." << endl;
+    pq.deleteKey(3);
+    pq.deleteKey(8);
+
+    // Print inorder traversal after deletion
+    cout << "Inorder traversal of the treap after deletion: ";
+    pq.inorderTraversal(pq.root);
+    cout << endl;
 
     // Pop elements from the priority queue
     cout << "Elements popped from the priority queue: ";
@@ -164,24 +182,13 @@ void testPriorityQueueAndTreap() {
         pq.pop();
     }
     cout << endl;
-
-    // Push elements into the priority queue again
-    cout << "Pushing elements into the priority queue again..." << endl;
-    for (int i = 0; i < 5; ++i) {
-        pq.push(keys[i], priorities[i]);
-    }
-
-    // Delete a key from the Treap
-    cout << "Deleting key 3 from the Treap..." << endl;
-    pq.deleteKey(3);
-
-    // Inorder traversal of the Treap
-    cout << "Inorder traversal of the Treap: ";
-    pq.inorderTraversal(pq.root);
-    cout << endl;
 }
 
+
 int main() {
+    srand(time(NULL)); // Seed the random number generator
     testPriorityQueueAndTreap();
     return 0;
 }
+
+
